@@ -4,7 +4,7 @@ qgisMinimumVersion=3.16.0
 qgisMaximumVersion=4.99.0
 description=QGIS plugin. Kakao(Daum), Naver, VWorld, NGII Map Layers for Korean users
 about=QGIS plugin. Kakao(Daum), Naver, VWorld, NGII Map Layers for Korean users
-version=3.0.5
+version=3.0.6
 
 # tags are comma separated with spaces allowed
 tags=openlayers, kakao, naver, vworld, ngii
@@ -26,6 +26,11 @@ email=mapplus@gmail.com
 
 # Uncomment the following line and add your changelog entries:
 changelog=
+    3.0.6
+        - Added map service manager UI and dynamic map service URL update flow
+        - Added tile URL gateway (prefix/template) for proxy/intranet environments
+        - Added Kakao SDK key input in URL update tab (no hardcoded key)
+        - Improved latest URL tab layout and unified test results into progress log
     3.0.5
         - Update VWorld, Kakao, Naver Maps (2022/05/19)
     3.0.4
