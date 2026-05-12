@@ -1,4 +1,4 @@
-﻿/* Copyright (c) 2006-2012 by OpenLayers Contributors (see authors.txt for 
+/* Copyright (c) 2006-2012 by OpenLayers Contributors (see authors.txt for 
  * full list of contributors). Published under the 2-clause BSD license.
  * See license.txt in the OpenLayers distribution or repository for the
  * full text of the license. */
@@ -11,16 +11,17 @@ OpenLayers.Layer.NaverCadstral = OpenLayers.Class(OpenLayers.Layer.XYZ, {
   
     name: "NaverCadstralMap",
     url: [
-    "https://simg.pstatic.net/onetile/get/196/0/0/${z}/${x}/${y}/empty/ol_lp_cn"
+    "https://map.pstatic.net/nrb/styles/basic/1778232861/${z}/${x}/${y}.jpg?mt=bg.ol.ts.lp"
     ],
   resolutions: [2048, 1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1, 0.5, 0.25],
-  attribution: '<a href="https://www.naver.com/" target="_blank" style="text-decoration: none !important;">© <span style="display: inline; font-family: Tahoma,sans-serif !important; font-size: 9px !important; font-weight: bold !important; font-style: normal !important; color: #009BC8 !important; text-decoration: none !important;">'
+  attribution: '<a href="http://www.nhncorp.com" target="_blank" style="text-decoration: none !important;">© <span style="display: inline; font-family: Tahoma,sans-serif !important; font-size: 9px !important; font-weight: bold !important; font-style: normal !important; color: #009BC8 !important; text-decoration: none !important;">'
     + 'NHN Corp.</span></a>'
     + '<img class="nmap_logo_map" src="http://static.naver.net/maps2/logo_naver_s.png" width="43" height="9" alt="NAVER">',
   sphericalMercator: false,
-  buffer: 0,
+  transitionEffect: "resize",
+  buffer: 1,
   numZoomLevels: 14,
-  minResolution: 0.25,
+  minResolution: 0.5,
   maxResolution: 2048,
   units: "m",
   projection: new OpenLayers.Projection("EPSG:5179"),
@@ -42,20 +43,7 @@ OpenLayers.Layer.NaverCadstral = OpenLayers.Class(OpenLayers.Layer.XYZ, {
     },
 
   getXYZ: function(bounds) {
-        var res = this.getServerResolution();
-        var x = Math.round((bounds.left - this.maxExtent.left) /
-            (res * this.tileSize.w));
-        var y = Math.round((bounds.bottom - this.maxExtent.bottom) /
-            (res * this.tileSize.h));
-        var z = this.getServerZoom() + 1;
-
-        if (this.wrapDateLine) {
-            var limit = Math.pow(2, z);
-            x = ((x % limit) + limit) % limit;
-        }
-
-        return {'x': x, 'y': y, 'z': z};
-    },
-  
-    CLASS_NAME: "OpenLayers.Layer.NaverCadstral"
+    return OpenLayers.Layer.Naver5179_getXYZ.call(this, bounds);
+  },
+  CLASS_NAME: "OpenLayers.Layer.NaverCadstral"
 });

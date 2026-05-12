@@ -1,0 +1,126 @@
+{
+  "_proxy": {
+    "enabled": false,
+    "mode": "http_host",
+    "http_host": "",
+    "http_port": 8080,
+    "http_user": "",
+    "http_password": "",
+    "url_get_template": ""
+  },
+  "_tile_gateway": {
+    "enabled": false,
+    "mode": "none",
+    "prefix": "",
+    "template": "",
+    "encode_target": false
+  },
+  "_api": {
+    "kakao_sdk_key": ""
+  },
+  "daum_maps": {
+    "street": {
+      "urls": [
+        "http://mts.daumcdn.net/api/v1/tile/PNG02/v17_8uj6w/latest/{z}/{x}/{y}.png"
+      ],
+      "attribution": "<a target=\"_blank\" href=\"http://map.kakao.com/\" title=\"Kakao 지도로 보시려면 클릭하세요.\" style=\"float: left; width: 32px; height: 10px;\"><img style=\"float: left; width: 32px; height: 10px; border: medium none;\" src=\"https://t1.daumcdn.net/mapjsapi/images/2x/m_bi_b.png\" alt=\"Kakao 지도로 이동\"></a>",
+      "version": "17_8uj6w"
+    },
+    "satellite": {
+      "urls": [
+        "https://map{0-3}.daumcdn.net/map_skyview/L{z}/{x}/{y}.jpg?v=160114"
+      ],
+      "attribution": "<a target=\"_blank\" href=\"http://map.kakao.com/\" title=\"Kakao 지도로 보시려면 클릭하세요.\" style=\"float: left; width: 32px; height: 10px;\"><img style=\"float: left; width: 32px; height: 10px; border: medium none;\" src=\"https://t1.daumcdn.net/mapjsapi/images/2x/m_bi_b.png\" alt=\"Kakao 지도로 이동\"></a>",
+      "version": "17_8uj6w"
+    },
+    "hybrid": {
+      "urls": [
+        "http://mts.daumcdn.net/api/v1/tile/PNG_SKYH02/v17_kdqve/latest/{z}/{x}/{y}.png"
+      ],
+      "attribution": "<a target=\"_blank\" href=\"http://map.kakao.com/\" title=\"Kakao 지도로 보시려면 클릭하세요.\" style=\"float: left; width: 32px; height: 10px;\"><img style=\"float: left; width: 32px; height: 10px; border: medium none;\" src=\"https://t1.daumcdn.net/mapjsapi/images/2x/m_bi_b.png\" alt=\"Kakao 지도로 이동\"></a>",
+      "version": "v17_kdqve"
+    },
+    "physical": {
+      "urls": [
+        "http://mts.daumcdn.net/api/v1/tile/PNG02/v17_8uj6w/latest/{z}/{x}/{y}.png"
+      ],
+      "attribution": "<a target=\"_blank\" href=\"http://map.kakao.com/\" title=\"Kakao 지도로 보시려면 클릭하세요.\" style=\"float: left; width: 32px; height: 10px;\"><img style=\"float: left; width: 32px; height: 10px; border: medium none;\" src=\"https://t1.daumcdn.net/mapjsapi/images/2x/m_bi_b.png\" alt=\"Kakao 지도로 이동\"></a>",
+      "version": "17_8uj6w"
+    },
+    "cadastral": {
+      "urls": [
+        "http://mts.daumcdn.net/api/v1/tile/PNG_CAD02/v14_i1vtt/latest/{z}/{x}/{y}.png"
+      ],
+      "attribution": "<a target=\"_blank\" href=\"http://map.kakao.com/\" title=\"Kakao 지도로 보시려면 클릭하세요.\" style=\"float: left; width: 32px; height: 10px;\"><img style=\"float: left; width: 32px; height: 10px; border: medium none;\" src=\"https://t1.daumcdn.net/mapjsapi/images/2x/m_bi_b.png\" alt=\"Kakao 지도로 이동\"></a>",
+      "version": "v14_i1vtt"
+    }
+  },
+  "naver_maps": {
+    "street": {
+      "urls": [
+        "https://map.pstatic.net/nrb/styles/basic/1778232861/${z}/${x}/${y}.jpg?mt=bg.ol.ts.lko"
+      ],
+      "attribution": "<a target=\"_blank\" href=\"https://map.naver.com/\" title=\"네이버 지도로 이동\">네이버 지도</a>",
+      "version": "1778232861"
+    },
+    "satellite": {
+      "urls": [
+        "https://map.pstatic.net/nrb/styles/satellite/1778232861/${z}/${x}/${y}.jpg?mt=bg.ol.ts"
+      ],
+      "attribution": "<a target=\"_blank\" href=\"https://map.naver.com/\" title=\"네이버 지도로 이동\">네이버 지도</a>",
+      "version": "1778232861"
+    },
+    "hybrid": {
+      "urls": [
+        "https://map.pstatic.net/nrb/styles/satellite/1778232861/${z}/${x}/${y}.jpg?mt=bg.ol.ts.lko"
+      ],
+      "attribution": "<a target=\"_blank\" href=\"https://map.naver.com/\" title=\"네이버 지도로 이동\">네이버 지도</a>",
+      "version": "1778232861"
+    },
+    "physical": {
+      "urls": [
+        "https://map.pstatic.net/nrb/styles/terrain/1778232861/${z}/${x}/${y}.jpg?mt=bg.ol.ts.lko"
+      ],
+      "attribution": "<a target=\"_blank\" href=\"https://map.naver.com/\" title=\"네이버 지도로 이동\">네이버 지도</a>",
+      "version": "1778232861"
+    },
+    "cadastral": {
+      "urls": [
+        "https://map.pstatic.net/nrb/styles/basic/1778232861/${z}/${x}/${y}.jpg?mt=bg.ol.ts.lp"
+      ],
+      "attribution": "<a target=\"_blank\" href=\"https://map.naver.com/\" title=\"네이버 지도로 이동\">네이버 지도</a>",
+      "version": "1778232861"
+    }
+  },
+  "vworld_maps": {
+    "street": {
+      "urls": [
+        "https://xdworld.vworld.kr/2d/Base/service/{z}/{x}/{y}.png"
+      ],
+      "attribution": "<a target=\"_blank\" href=\"https://www.vworld.kr/\" title=\"VWorld로 이동\">VWorld</a>",
+      "version": "latest"
+    },
+    "satellite": {
+      "urls": [
+        "https://xdworld.vworld.kr/2d/Satellite/service/{z}/{x}/{y}.jpeg"
+      ],
+      "attribution": "<a target=\"_blank\" href=\"https://www.vworld.kr/\" title=\"VWorld로 이동\">VWorld</a>",
+      "version": "latest"
+    },
+    "hybrid": {
+      "urls": [
+        "https://xdworld.vworld.kr/2d/Satellite/service/{z}/{x}/{y}.jpeg",
+        "https://xdworld.vworld.kr/2d/Hybrid/service/{z}/{x}/{y}.png"
+      ],
+      "attribution": "<a target=\"_blank\" href=\"https://www.vworld.kr/\" title=\"VWorld로 이동\">VWorld</a>",
+      "version": "latest"
+    },
+    "gray": {
+      "urls": [
+        "https://xdworld.vworld.kr/2d/white/service/{z}/{x}/{y}.png"
+      ],
+      "attribution": "<a target=\"_blank\" href=\"https://www.vworld.kr/\" title=\"VWorld로 이동\">VWorld</a>",
+      "version": "latest"
+    }
+  }
+}

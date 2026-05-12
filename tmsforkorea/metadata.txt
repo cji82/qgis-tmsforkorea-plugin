@@ -1,6 +1,7 @@
 [general]
 name=TMS for Korea
 qgisMinimumVersion=3.16.0
+qgisMaximumVersion=4.99.0
 description=QGIS plugin. Kakao(Daum), Naver, VWorld, NGII Map Layers for Korean users
 about=QGIS plugin. Kakao(Daum), Naver, VWorld, NGII Map Layers for Korean users
 version=3.0.5

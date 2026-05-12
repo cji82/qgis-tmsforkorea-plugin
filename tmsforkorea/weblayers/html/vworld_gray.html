@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>OpenLayers VWorldGray Layer</title>
+    <title>OpenLayers VWorld 백지도 Layer</title>
     <link rel="stylesheet" href="qgis.css" type="text/css">
     <script src="OpenLayers.js"></script>
     <script src="OlOverviewMarker.js"></script>
@@ -40,9 +40,9 @@
             }
 
             var vWorldStreet = new OpenLayers.Layer.XYZ(
-                "VWorld Gray Map",
+                "VWorld 백지도",
                 [
-                    "https://xdworld.vworld.kr/2d/gray/service/${z}/${x}/${y}.png"
+                    "https://xdworld.vworld.kr/2d/white/service/${z}/${x}/${y}.png"
                 ], {
                     attribution: '<a target="_blank" href="https://map.vworld.kr/" '
                         + 'style="float: left; width: 353px; height: 29px; cursor: pointer; background-image: url(https://map.vworld.kr/images/maps/logo_openplatform.png); background-repeat: no-repeat no-repeat; " '

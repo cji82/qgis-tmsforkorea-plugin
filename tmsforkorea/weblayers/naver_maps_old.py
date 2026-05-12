@@ -21,7 +21,46 @@ email                : mapplus at gmail.com
 """
 
 from qgis.core import (Qgis, QgsCoordinateReferenceSystem)
-from .weblayer import WebLayer
+from .weblayer import WebLayer, WebLayer3857
+
+
+class WebLayerNaver3857(WebLayer3857):
+    """네이버 nrb 타일용 - EPSG:3857 (Web Mercator)"""
+    SCALE_ON_MAX_ZOOM = 13540
+    emitsLoadEnd = False
+
+
+class OlNaverMaps3857Layer(WebLayerNaver3857):
+    groupName = 'Naver Maps'
+    groupIcon = 'naver_icon.png'
+    epsgList = [3857]
+    fullExtent = [13805000, 3894000, 14695000, 5307000]
+    MIN_ZOOM_LEVEL = 0
+    MAX_ZOOM_LEVEL = 18
+
+    def __init__(self, name, html, xyzUrl=None):
+        WebLayerNaver3857.__init__(self, groupName=self.groupName, groupIcon=self.groupIcon,
+                                   name=name, html=html, xyzUrl=xyzUrl)
+
+
+class OlNaverStreet3857Layer(OlNaverMaps3857Layer):
+    def __init__(self):
+        OlNaverMaps3857Layer.__init__(self, name='Naver Street', html='naver_street_3857.html', xyzUrl=None)
+
+
+class OlNaverSatellite3857Layer(OlNaverMaps3857Layer):
+    def __init__(self):
+        OlNaverMaps3857Layer.__init__(self, name='Naver Satellite', html='naver_satellite_3857.html', xyzUrl=None)
+
+
+class OlNaverHybrid3857Layer(OlNaverMaps3857Layer):
+    def __init__(self):
+        OlNaverMaps3857Layer.__init__(self, name='Naver Hybrid', html='naver_hybrid_3857.html', xyzUrl=None)
+
+
+class OlNaverPhysical3857Layer(OlNaverMaps3857Layer):
+    def __init__(self):
+        OlNaverMaps3857Layer.__init__(self, name='Naver Physical', html='naver_physical_3857.html', xyzUrl=None)
 
 
 class WebLayerNaver5179(WebLayer):

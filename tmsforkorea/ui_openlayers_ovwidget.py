@@ -6,7 +6,24 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+try:
+    from qgis.PyQt import QtCore, QtGui, QtWidgets
+except ImportError:
+    try:
+        from PyQt5 import QtCore, QtGui, QtWidgets
+    except ImportError:
+        from PyQt6 import QtCore, QtGui, QtWidgets
+
+
+def _qt_enum(name, enum_type=None):
+    qt = QtCore.Qt
+    if hasattr(qt, name):
+        return getattr(qt, name)
+    if enum_type and hasattr(qt, enum_type):
+        enum_cls = getattr(qt, enum_type)
+        if hasattr(enum_cls, name):
+            return getattr(enum_cls, name)
+    raise AttributeError("Qt enum not found: {}".format(name))
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -32,7 +49,7 @@ class Ui_Form(object):
         self.verticalLayout_2.addLayout(self.lytEnableMap)
         self.lbStatusRead = QtWidgets.QLabel(Form)
         self.lbStatusRead.setText("")
-        self.lbStatusRead.setTextFormat(QtCore.Qt.PlainText)
+        self.lbStatusRead.setTextFormat(_qt_enum("PlainText", "TextFormat"))
         self.lbStatusRead.setObjectName("lbStatusRead")
         self.verticalLayout_2.addWidget(self.lbStatusRead)
         self.webViewMap = QtWebKitWidgets.QWebView(Form)
@@ -72,4 +89,7 @@ class Ui_Form(object):
         self.pbSaveImg.setToolTip(_translate("Form", "Save this image"))
         self.pbCopyKml.setToolTip(_translate("Form", "Copy rectangle (KML) of map to clipboard"))
 
-from PyQt5 import QtWebKitWidgets
+try:
+    from qgis.PyQt import QtWebKitWidgets
+except ImportError:
+    from PyQt5 import QtWebKitWidgets

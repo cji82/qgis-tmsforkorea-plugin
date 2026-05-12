@@ -6,7 +6,35 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+try:
+    from qgis.PyQt import QtCore, QtGui, QtWidgets
+except ImportError:
+    try:
+        from PyQt5 import QtCore, QtGui, QtWidgets
+    except ImportError:
+        from PyQt6 import QtCore, QtGui, QtWidgets
+
+
+def _qt_enum(name, enum_type=None):
+    qt = QtCore.Qt
+    if hasattr(qt, name):
+        return getattr(qt, name)
+    if enum_type and hasattr(qt, enum_type):
+        enum_cls = getattr(qt, enum_type)
+        if hasattr(enum_cls, name):
+            return getattr(enum_cls, name)
+    raise AttributeError("Qt enum not found: {}".format(name))
+
+
+def _qdialog_button(name):
+    qdb = QtWidgets.QDialogButtonBox
+    if hasattr(qdb, name):
+        return getattr(qdb, name)
+    if hasattr(qdb, "StandardButton"):
+        sb = qdb.StandardButton
+        if hasattr(sb, name):
+            return getattr(sb, name)
+    raise AttributeError("QDialogButtonBox button enum not found: {}".format(name))
 
 class Ui_dlgAbout(object):
     def setupUi(self, dlgAbout):
@@ -23,7 +51,7 @@ class Ui_dlgAbout(object):
         self.textBrowser = QtWidgets.QTextBrowser(self.tab_terms)
         self.textBrowser.setUndoRedoEnabled(False)
         self.textBrowser.setReadOnly(True)
-        self.textBrowser.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByMouse|QtCore.Qt.TextSelectableByMouse)
+        self.textBrowser.setTextInteractionFlags(_qt_enum("LinksAccessibleByMouse", "TextInteractionFlag") | _qt_enum("TextSelectableByMouse", "TextInteractionFlag"))
         self.textBrowser.setOpenExternalLinks(True)
         self.textBrowser.setObjectName("textBrowser")
         self.verticalLayout_2.addWidget(self.textBrowser)
@@ -35,7 +63,7 @@ class Ui_dlgAbout(object):
         self.textBrowser_2 = QtWidgets.QTextBrowser(self.tab_about)
         self.textBrowser_2.setUndoRedoEnabled(False)
         self.textBrowser_2.setReadOnly(True)
-        self.textBrowser_2.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByMouse|QtCore.Qt.TextSelectableByMouse)
+        self.textBrowser_2.setTextInteractionFlags(_qt_enum("LinksAccessibleByMouse", "TextInteractionFlag") | _qt_enum("TextSelectableByMouse", "TextInteractionFlag"))
         self.textBrowser_2.setOpenExternalLinks(True)
         self.textBrowser_2.setObjectName("textBrowser_2")
         self.verticalLayout_4.addWidget(self.textBrowser_2)
@@ -48,13 +76,13 @@ class Ui_dlgAbout(object):
         self.logo.setAutoFillBackground(False)
         self.logo.setPixmap(QtGui.QPixmap(":/plugins/openlayers/qgiscloud.png"))
         self.logo.setScaledContents(False)
-        self.logo.setAlignment(QtCore.Qt.AlignCenter)
+        self.logo.setAlignment(_qt_enum("AlignCenter", "AlignmentFlag"))
         self.logo.setObjectName("logo")
         self.verticalLayout_5.addWidget(self.logo)
         self.textBrowser1 = QtWidgets.QTextBrowser(self.tab_publishing)
         self.textBrowser1.setAcceptDrops(False)
         self.textBrowser1.setReadOnly(True)
-        self.textBrowser1.setTextInteractionFlags(QtCore.Qt.TextBrowserInteraction)
+        self.textBrowser1.setTextInteractionFlags(_qt_enum("TextBrowserInteraction", "TextInteractionFlag"))
         self.textBrowser1.setOpenExternalLinks(True)
         self.textBrowser1.setObjectName("textBrowser1")
         self.verticalLayout_5.addWidget(self.textBrowser1)
@@ -71,8 +99,8 @@ class Ui_dlgAbout(object):
         self.verticalLayout.setObjectName("verticalLayout")
         self.verticalLayout_3.addWidget(self.widget)
         self.buttonBox = QtWidgets.QDialogButtonBox(dlgAbout)
-        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Close)
+        self.buttonBox.setOrientation(_qt_enum("Horizontal", "Orientation"))
+        self.buttonBox.setStandardButtons(_qdialog_button("Close"))
         self.buttonBox.setCenterButtons(True)
         self.buttonBox.setObjectName("buttonBox")
         self.verticalLayout_3.addWidget(self.buttonBox)

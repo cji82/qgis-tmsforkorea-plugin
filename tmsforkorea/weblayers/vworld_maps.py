@@ -75,5 +75,6 @@ class OlVWorldSatelliteLayer(OlVWorldMapsLayer):
 class OlVWorldGrayLayer(OlVWorldMapsLayer):
 
     def __init__(self):
-        tmsUrl = 'https://xdworld.vworld.kr/2d/gray/service/{z}/{x}/{y}.png'
-        OlVWorldMapsLayer.__init__(self, name='VWorld Gray', html='vworld_gray.html', xyzUrl=tmsUrl, tilePixelRatio=1)
+        # 구 'gray' 경로(404). 주간용 단색 기저는 white(백지도). midnight은 야간 지도.
+        tmsUrl = 'https://xdworld.vworld.kr/2d/white/service/{z}/{x}/{y}.png'
+        OlVWorldMapsLayer.__init__(self, name='VWorld 백지도', html='vworld_gray.html', xyzUrl=tmsUrl, tilePixelRatio=1)

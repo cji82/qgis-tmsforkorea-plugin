@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>OpenLayers Naver Hybrid (3857)</title>
+    <link rel="stylesheet" href="qgis.css" type="text/css">
+    <script src="OpenLayers.js"></script>
+    <script src="OpenLayers.Layer.Naver3857.js"></script>
+    <script src="OlOverviewMarker.js"></script>
+    <script type="text/javascript">
+        var map; var loadEnd; var oloMarker;
+        function init() {
+            map = new OpenLayers.Map('map', {
+              theme: null,
+              controls: [
+                new OpenLayers.Control.Attribution(),
+                new OpenLayers.Control.Navigation({ dragPanOptions: { enableKinetic: true } })
+              ],
+              sphericalMercator: true,
+              projection: new OpenLayers.Projection("EPSG:3857"),
+              units: "m", numZoomLevels: 19, maxResolution: 156543.0339,
+              maxExtent: new OpenLayers.Bounds(-20037508.34, -20037508.34, 20037508.34, 20037508.34)
+            });
+            loadEnd = false;
+            function layerLoadStart(event) { loadEnd = false; }
+            function layerLoadEnd(event) { loadEnd = true; }
+            var layer = new OpenLayers.Layer.Naver3857("Naver Hybrid",
+                { layerUrl: "https://map.pstatic.net/nrb/styles/satellite/1778232861/${z}/${x}/${y}.jpg?mt=bg.ol.ts.lko",
+                  eventListeners: { "loadstart": layerLoadStart, "loadend": layerLoadEnd } }
+            );
+            map.addLayer(layer);
+            map.setCenter(new OpenLayers.LonLat(14243426, 4302306), 10);
+            oloMarker = new OlOverviewMarker(map, getPathUpper(document.URL) + '/x.png');
+        }
+    </script>
+  </head>
+  <body onload="init()">
+    <div id="map"></div>
+  </body>
+</html>

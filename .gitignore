@@ -161,3 +161,9 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
+
+# Cursor IDE
+.cursor/
+
+# 로컬 개발 메모 (커밋 제외)
+DEV_CHECKPOINT.md

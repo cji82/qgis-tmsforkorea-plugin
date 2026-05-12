@@ -89,6 +89,16 @@
         <source>Could not set Google projection!</source>
         <translation>구글 좌표계로 설정할 수 없습니다!</translation>
     </message>
+    <message>
+        <location filename="openlayers_plugin.py" line="230"/>
+        <source>Registered {0} OpenLayers layer type(s) from map_services.json.</source>
+        <translation>map_services.json에서 OpenLayers 레이어 {0}개 등록됨.</translation>
+    </message>
+    <message>
+        <location filename="openlayers_plugin.py" line="239"/>
+        <source>JSON-based OpenLayers layer registration failed; using bundled static HTML. {0}</source>
+        <translation>JSON 기반 OpenLayers 레이어 등록 실패, 번들 정적 HTML로 전환. {0}</translation>
+    </message>
 </context>
 <context>
     <name>dlgAbout</name>

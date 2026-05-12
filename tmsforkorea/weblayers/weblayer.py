@@ -31,8 +31,9 @@ class WebLayerGroup:
 
     def __init__(self, name, icon):
         self._menu = QMenu(name)
-        self._menu.setIcon(QIcon(os.path.join(
-            ":/plugins/tmsforkorea/weblayers/icons", icon)))
+        # Qt 리소스 경로는 슬래시 사용 (os.path.join은 Windows에서 백슬래시 사용)
+        icon_path = ":/plugins/tmsforkorea/weblayers/icons/" + icon
+        self._menu.setIcon(QIcon(icon_path))
 
     def menu(self):
         return self._menu
@@ -149,6 +150,32 @@ class WebLayer3857(WebLayer):
             lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 "
             google_proj_def += "+units=m +nadgrids=@null +wktext +no_defs"
             isOk = coordRefSys.createFromProj4(google_proj_def)
+            if not isOk:
+                return None
+        return coordRefSys
+
+
+class WebLayer5179(WebLayer):
+
+    epsgList = [5179]
+
+    MAX_ZOOM_LEVEL = 14
+    SCALE_ON_MAX_ZOOM = 13540  # QGIS scale for 72 dpi
+
+    def coordRefSys(self, mapCoordSys):
+        epsg = self.epsgList[0]
+        coordRefSys = QgsCoordinateReferenceSystem()
+        if QGis.QGIS_VERSION_INT >= 10900:
+            idEpsgRSGoogle = "EPSG:%d" % epsg
+            createCrs = coordRefSys.createFromOgcWmsCrs(idEpsgRSGoogle)
+        else:
+            idEpsgRSGoogle = epsg
+            createCrs = coordRefSys.createFromEpsg(idEpsgRSGoogle)
+        if not createCrs:
+            # EPSG:5179의 경우 수동으로 정의
+            proj_def = "+proj=tmerc +lat_0=38 +lon_0=127.5 +k=0.9996 +x_0=1000000 +y_0=2000000 +ellps=GRS80 "
+            proj_def += "+towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
+            isOk = coordRefSys.createFromProj4(proj_def)
             if not isOk:
                 return None
         return coordRefSys
